@@ -36,7 +36,7 @@ A program to perform text/code generation tasks using the [openai models](https:
         -k KEYFILE, --keyfile=KEYFILE
                         The file that holds the api key for openai
 
-### Example1
+### Example1: Generate code to fetch prices for cryptocurrencies from coingecko.com
 
 input.py
 
@@ -89,8 +89,32 @@ output.py
     print('DOGE: $' + str(doge_price))
 
 
+### Example 2: Generate a text
+
+prompt
+
+Compare and contrast Neuromancer by William Gibson with Snow Crash by Neal Stephenson in 500 words or less
+
+command 
+
+    python3 program.py -m text-davinci-003 -p input -o summary.txt -l 512
+
+output
+
+Compare and contrast Neuromancer by William Gibson with Snow Crash by Neal Stephenson in 500 words or less
+
+Neuromancer by William Gibson and Snow Crash by Neal Stephenson are two of the most influential science fiction novels of the late 20th century. Both novels explore the implications of a future in which technology has become an integral part of everyday life. While both novels are set in a dystopian future, they differ in their approach to the themes of technology, identity, and power.
+
+Neuromancer is set in a world where technology has become so pervasive that it has become a part of everyday life. The protagonist, Case, is a hacker who is hired to hack into a powerful artificial intelligence. The novel explores the implications of a world in which technology has become so powerful that it can be used to manipulate and control people. The novel also examines the implications of a world in which identity is fluid and can be manipulated by technology.
+
+Snow Crash is set in a future where technology has become so pervasive that it has become a part of everyday life. The protagonist, Hiro Protagonist, is a hacker who is hired to investigate a mysterious virus that is infecting the virtual world. The novel explores the implications of a world in which technology has become so powerful that it can be used to manipulate and control people. The novel also examines the implications of a world in which identity is fluid and can be manipulated by technology.
+
+The two novels differ in their approach to the themes of technology, identity, and power. Neuromancer focuses on the implications of a world in which technology has become so powerful that it can be used to manipulate and control people. The novel examines the implications of a world in which identity is fluid and can be manipulated by technology. Snow Crash, on the other hand, focuses on the implications of a world in which technology has become so pervasive that it has become a part of everyday life. The novel examines the implications of a world in which technology can be used to manipulate and control people, as well as the implications of a world in which identity is fluid and can be manipulated by technology.
+
+In conclusion, Neuromancer and Snow Crash are two of the most influential science fiction novels of the late 20th century. While both novels are set in a dystopian future, they differ in their approach to the themes of technology, identity, and power. Neuromancer focuses on the implications of a world in which technology has become so powerful that it can be used to manipulate and control people, while Snow Crash focuses on the implications of a world in which technology has become so pervasive that it has
+
 ---
-### Example 2
+### Example 3: Generate unit tests for a memoized fibonacci function
 
 prompt
 
