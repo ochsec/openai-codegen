@@ -36,7 +36,85 @@ A program to perform text/code generation tasks using the [openai models](https:
         -k KEYFILE, --keyfile=KEYFILE
                         The file that holds the api key for openai
 
-### Example1: Generate code to fetch prices for cryptocurrencies from coingecko.com
+
+---
+### Example 1: Generate a Fibonacci number algorithm that uses memoization
+
+prompt
+
+    # Python
+    # a function that calculates a fibonacci number using memoization
+
+command
+
+    python3 program.py -p input.py -o fib.py
+
+output
+
+    # Python
+    # a function that calculates a fibonacci number using memoization
+
+    def fib(n, memo):
+        if memo[n] is not None:
+            return memo[n]
+        if n == 1 or n == 2:
+            result = 1
+        else:
+            result = fib(n-1, memo) + fib(n-2, memo)
+        memo[n] = result
+        return result
+
+    def fib_memo(n):
+        memo = [None] * (n + 1)
+        return fib(n, memo)
+
+    print(fib_memo(10))
+
+---
+### Example 2: Generate an AWS Cloudformation template for a dynamodb table
+
+prompt
+
+    Create a dynamodb cloudformation template for a dynamodb table
+    The template should be in yaml format
+    The table name should be company
+    The primary key should be cid
+    The read capacity should be 5
+    The write capacity should be 5
+
+command 
+
+    python3 program.py -p input -o template.yaml -l 1024 -m text-davinci-003 -t 0.2
+
+output
+
+    Create a dynamodb cloudformation template for a dynamodb table
+    The template should be in yaml format
+    The table name should be company
+    The primary key should be cid
+    The read capacity should be 5
+    The write capacity should be 5
+
+    ---
+    AWSTemplateFormatVersion: '2010-09-09'
+    Resources:
+    CompanyTable:
+        Type: AWS::DynamoDB::Table
+        Properties:
+        TableName: company
+        AttributeDefinitions:
+            - AttributeName: cid
+            AttributeType: S
+        KeySchema:
+            - AttributeName: cid
+            KeyType: HASH
+        ProvisionedThroughput:
+            ReadCapacityUnits: 5
+            WriteCapacityUnits: 5
+
+
+---
+### Example 3: Generate code to fetch prices for cryptocurrencies from coingecko.com
 
 input.py
 
@@ -88,52 +166,8 @@ output.py
     print('ETH: $' + str(eth_price))
     print('DOGE: $' + str(doge_price))
 
-
 ---
-### Example 2: Generate an AWS Cloudformation template for a dynamodb table
-
-prompt
-
-    Create a dynamodb cloudformation template for a dynamodb table
-    The template should be in yaml format
-    The table name should be company
-    The primary key should be cid
-    The read capacity should be 5
-    The write capacity should be 5
-
-command 
-
-    python3 program.py -p input -o template.yaml -l 1024 -m text-davinci-003 -t 0.2
-
-output
-
-    Create a dynamodb cloudformation template for a dynamodb table
-    The template should be in yaml format
-    The table name should be company
-    The primary key should be cid
-    The read capacity should be 5
-    The write capacity should be 5
-
-    ---
-    AWSTemplateFormatVersion: '2010-09-09'
-    Resources:
-    CompanyTable:
-        Type: AWS::DynamoDB::Table
-        Properties:
-        TableName: company
-        AttributeDefinitions:
-            - AttributeName: cid
-            AttributeType: S
-        KeySchema:
-            - AttributeName: cid
-            KeyType: HASH
-        ProvisionedThroughput:
-            ReadCapacityUnits: 5
-            WriteCapacityUnits: 5
-
-
----
-### Example 3: Generate unit tests for a memoized fibonacci function
+### Example 4: Generate unit tests for a memoized fibonacci function
 
 prompt
 
